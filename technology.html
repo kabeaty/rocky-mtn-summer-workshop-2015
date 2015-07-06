@@ -47,8 +47,8 @@
         <li class="top-nav-list"><a class="nav-link" href="technology.html">Technology</a></li>
         <li class="top-nav-list"><a class="nav-link" href="denver.html">Denver</a></li>
       </ul>
-<h1> Technology </h1>
-<h2> Technology for Demos </h2>
+<h2> Technology </h2>
+<h3> Technology for Demos </h3>
 <p> Each afternoon will have a series of interactive software demos. Each participant is expected to bring a laptop with them to work on the demos. Most of the demos will be done within a Docker container (see below). <b> Please download and install docker and the docker image for the workshop BEFORE the workshop begins.</b> If you have any issues installing Docker or pulling down the image, contact Steve Mattis (steve.a.mattis@gmail.com).
 </p>
 <p>Wednesday afternoon will feature a series of error estimation demos. There are versions of these demos  written in Matlab and Python. They are written in a way such that in-depth knowledge of these languages is not necessary to run them. If you have Matlab, that version of the demos should work on your local distribution of Matlab. The Python version of the demos require a build of <a href="http://fenicsproject.org/">FEniCS</a> and several other packages. Because of the difficulty in trying to build all of these packages on individuals' personal machines, we have built a Docker environment (explained below) containing the necessary requirements. The Python demos can be run in the Docker containers easily on any machine.
@@ -58,7 +58,7 @@
 <p>
 Friday afternoon will feature a demo of <a href="http://ut-chg.github.io/BET/index.html">BET</a>. BET is also built within the provided Docker image.
 </p>
-<h2 id="docker-for-rmswuq">Docker for RMSWUQ</h2>
+<h3 id="docker-for-rmswuq">Docker for RMSWUQ</h3>
 <p>We will use Docker for many of the demos at the workshop. Docker is an open-source project that automates the deployment of applications inside software containers via operation-system-level virtualization. This allows individiuals with different types of systems to all run with the same virtual environment. </p>
 <p>The Docker image for the workshop contains a virtual Ubuntu OS with the most stable releases of <a href="http://fenicsproject.org/">FEniCS</a>, <a href="http://ut-chg.github.io/BET/index.html">BET</a>, and <a href="http://libqueso.com/">QUESO</a>. To use the image, you will need to install docker and pull the image for the workshop. After this is done, a container may be launched via the commands below or with the provided shell script.</p>
 <ul>
