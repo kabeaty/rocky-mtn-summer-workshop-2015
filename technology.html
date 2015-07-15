@@ -82,7 +82,7 @@ Friday afternoon will feature a demo of <a href="http://ut-chg.github.io/BET/ind
 <li><p>To share a specified directory from the host with the container:</p>
 <pre><code>docker run -v /absolute/path/to/shared/directory:/home/rmswuq/shared -t -i smattis/rmswuq-docker:latest
 </code></pre></li>
-<li><p>The shell script <a href="rmswuq"> rmswuq</a> is useful for running this container. Copy the file to the directory in which you want to work and do</p>
+<li><p>The shell script <a href="https://raw.githubusercontent.com/smattis/rmswuq-docker-extended/master/rmswuq"> rmswuq</a> is useful for running this container. Copy the file to the directory in which you want to work and do</p>
 <pre><code>./rmswuq
 </code></pre><p>This will launch the container and share a subdirectory called <code>shared</code>.</p>
 </li>
@@ -90,5 +90,27 @@ Friday afternoon will feature a demo of <a href="http://ut-chg.github.io/BET/ind
 <pre><code>./rmswuq -gui
 </code></pre></li>
 </ul>
+<h3> Docker Troubleshooting</h3>
+<p>A few people have had some issues with Docker. Here are some things that may cause issues and how to fix them:</p>
+
+<li><p>When you are inside a docker container, do not close the terminal. Close it properly by doing <code>exit</code>. If you do improperly close a container, the next time you run it, you will get a message like </p>
+   <pre><code> Conflict. The name "rmswuq-latest" is already in use by container xxxxxx. You have to delete (or rename) that container to be able to reuse that name.</pre></code>
+   <p> If this happens just do</p>
+   
+     <pre><code>docker rm xxxxxx  </pre></code>
+    
+    <p>and relaunch the container.</p>
+</li>
+<li> <p>If you are using boot2docker and are getting strange error messages, try doing </p>
+<pre><code> docker stop
+ docker start</pre></code>
+<p> and retrying. If that does not work, and boot2docker is not responding, try</p>
+<pre><code> boot2docker stop
+ boot2docker destroy
+ boot2docker init
+ boot2docker up
+</pre></code>
+<p>You will have to pull down the image again after doing this. </p>
+</li>
 
 </body></html>
