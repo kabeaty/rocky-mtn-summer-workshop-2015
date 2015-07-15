@@ -115,4 +115,13 @@ Friday afternoon will feature a demo of <a href="http://ut-chg.github.io/BET/ind
 <p>You will have to pull down the image again after doing this. </p>
 </li>
 
+<h3> Docker for Demos: Step By Step</h3>
+<li> <p> Install boot2docker (or just docker for Linux) by following above instructions and launch it.
+</p>
+</li>
+<li> <p> Navigate to the directory on your local machine that you want to work in.</p>
+</li>
+<li> <p> Launch the container and share a directory by:</p>
+<pre><code> docker run -v $PWD/shared:/home/rmswuq/shared -t -i smattis/rmswuq-docker-extended </code></pre>
+</li>
 </body></html>
