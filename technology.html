@@ -76,19 +76,19 @@ Friday afternoon will feature a demo of <a href="http://ut-chg.github.io/BET/ind
 <li><p>To get the image (this may take several minutes):</p>
 <pre><code>docker pull smattis/rmswuq-docker
 </code></pre></li>
-<li><p>To launch the container:</p>
-<pre><code>docker run -t -i smattis/rmswuq-docker:latest
-</code></pre></li>
-<li><p>To share a specified directory from the host with the container:</p>
-<pre><code>docker run -v /absolute/path/to/shared/directory:/home/rmswuq/shared -t -i smattis/rmswuq-docker:latest
-</code></pre></li>
-<li><p>The shell script <a href="https://raw.githubusercontent.com/smattis/rmswuq-docker-extended/master/rmswuq"> rmswuq</a> is useful for running this container. Copy the file to the directory in which you want to work and do</p>
-<pre><code>./rmswuq
-</code></pre><p>This will launch the container and share a subdirectory called <code>shared</code>.</p>
-</li>
-<li><p>If you are running on Ubuntu, you may also be able to share your display with the container using X11 forwarding by</p>
-<pre><code>./rmswuq -gui
-</code></pre></li>
+<!-- <li><p>To launch the container:</p> -->
+<!-- <pre><code>docker run -t -i smattis/rmswuq-docker:latest -->
+<!-- </code></pre></li> -->
+<!-- <li><p>To share a specified directory from the host with the container:</p> -->
+<!-- <pre><code>docker run -v /absolute/path/to/shared/directory:/home/rmswuq/shared -t -i smattis/rmswuq-docker:latest -->
+<!-- </code></pre></li> -->
+<!-- <li><p>The shell script <a href="https://raw.githubusercontent.com/smattis/rmswuq-docker-extended/master/rmswuq"> rmswuq</a> is useful for running this container. Copy the file to the directory in which you want to work and do</p> -->
+<!-- <pre><code>./rmswuq -->
+<!-- </code></pre><p>This will launch the container and share a subdirectory called <code>shared</code>.</p> -->
+<!-- </li> -->
+<!-- <li><p>If you are running on Ubuntu, you may also be able to share your display with the container using X11 forwarding by</p> -->
+<!-- <pre><code>./rmswuq -gui -->
+<!-- </code></pre></li> -->
 </ul>
 <h3> Docker Troubleshooting</h3>
 <p>A few people have had some issues with Docker. Here are some things that may cause issues and how to fix them:</p>
@@ -121,7 +121,17 @@ Friday afternoon will feature a demo of <a href="http://ut-chg.github.io/BET/ind
 </li>
 <li> <p> Navigate to the directory on your local machine that you want to work in.</p>
 </li>
-<li> <p> Launch the container and share a directory by:</p>
-<pre><code> docker run -v $PWD/shared:/home/rmswuq/shared -t -i smattis/rmswuq-docker-extended </code></pre>
+<li> <p> Launch the container and share a directory on Mac/Linux by:</p>
+<pre><code> docker --tlsverify=false run -v $PWD/shared:/home/rmswuq/shared -t -i smattis/rmswuq-docker-extended </code></pre>
+<p> or on Windows by</p> 
+<pre><code>docker --tlsverify=false run -d -p 8787:8787 -v /c/Users/foobar/shared:/home/rmswuq/shared -t -i smattis/rmswuq-docker-extended </code></pre>
+<p> replacing <code>/c/Users/foobar/shared</code> with the local directory you want to share.</p>
 </li>
+
+<p>This will launch a docker container in the terminal containing a virtualized Linux OS with all of the required packages installed for the demos. Think of this container as being a different machine (similar to a machine you have used ssh to access). Inside the container, it creates a directory called <code>shared</code> in the container's home directory. This directory is shared with the directory <code>/path/to/directory/shared</code>, where <code>/path/to/directory</code> is the path to the directory from which you launched the container. This directory is shared between the container and your local machine.</p> 
+
+<p>When running demos in the container, first copy them into the <code>shared</code> directory (see the WELCOME message when the container is launched). Since that directory is shared, you can now access them on your local machine. You can use your local text editor, image viewers, etc. If you wan to run code for the demos, do so in the container (since it has all of the software). Since you are working in the <code>shared</code> directory, any output fies are accessible from your local machine.
+</p>
+
+<p>Note: If running Linux, you may need to change of the permissions for the  <code>shared</code> directory in order to access files. </p>
 </body></html>
